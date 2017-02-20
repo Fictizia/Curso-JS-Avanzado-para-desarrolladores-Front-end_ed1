@@ -1,0 +1,2 @@
+#dont sync private folder
+private
