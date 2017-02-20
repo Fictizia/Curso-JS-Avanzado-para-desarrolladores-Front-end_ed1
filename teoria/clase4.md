@@ -2,7 +2,7 @@
 
 #### Cajero Automático
 
-![cajero automatico](http://rack.1.mshcdn.com/media/ZgkyMDE0LzAyLzI2L2YwL0JpdGNvaW5fQVRNLmJjN2IxLmpwZwpwCXRodW1iCTEyMDB4NjI3IwplCWpwZw/bdee5162/0fe/Bitcoin_ATM.jpg)
+![cajero automatico](https://news.bitcoin.com/wp-content/uploads/2015/10/Bitcoin-ATM.jpg)
 
 El objetivo de este ejercicio es crear un cajero automático que funcione solamente con la consola del navegador.
 
