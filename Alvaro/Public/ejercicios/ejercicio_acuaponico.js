@@ -1,4 +1,4 @@
-// declaro constructores
+// declaro constructores 
 var tanque = function(capacidad, dimensiones, color, aguaMax){
   this.tipo= "tanque";
   this.capacidad = capacidad;
