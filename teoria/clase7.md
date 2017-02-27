@@ -204,8 +204,43 @@ document.body.dispatchEvent(miEvento);
 
 **1 -** Reorganizar la [lista de profesores de Fictizia](http://www.fictizia.com/profesores/) por nombre y apellidos (alfabético)
 
+**Solución Parcial**
 ```javascript
-	// Tu solución
+	var profesoresData = "";
+	var profesores = Array.prototype.slice.call(document.querySelectorAll('#teachersList > li'));
+	
+	profesores.sort(function (a, b) {
+	    if (a.innerText < b.innerText)
+	        return -1;
+	    if (a.innerText > b.innerText)
+	        return 1;
+	    return 0;
+	});
+	
+	profesores.forEach(function(profesor){
+	  profesoresData += profesor.outerHTML;
+	})
+	
+	document.getElementById('teachersList').innerHTML = profesoresData;
+```
+
+**Solución Total**
+```javascript
+	//@see: https://davidwalsh.name/sorting-strings-accented-characters
+	var profesoresData = "";
+	var profesores = Array.prototype.slice.call(document.querySelectorAll('#teachersList > li'));
+	
+	profesores.sort(function (a, b) {
+	    return a.innerText.localeCompare(b.innerText);
+	});
+	
+	profesores.forEach(function(profesor){
+	  profesoresData += profesor.outerHTML;
+	})
+	
+	document.getElementById('teachersList').innerHTML = profesoresData;
+```
+
 ```
 
 
