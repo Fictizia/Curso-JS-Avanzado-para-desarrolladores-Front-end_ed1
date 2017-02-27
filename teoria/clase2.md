@@ -1241,8 +1241,8 @@ for (var i = 0; i < 10; i++) {
     ```
     - .toUTCString(), .toISOString() *Devuelve una cadena con la fecha en formatos específicos*
     ```javascript
-        ahora.toISOString(); // UTC
-        ahora.toUTCString(); // ISO
+        ahora.toISOString(); // ISO
+        ahora.toUTCString(); // UTC
     ```
     - .toLocaleString() *Devuelve una cadena con la fecha en version local.*
     ```javascript
