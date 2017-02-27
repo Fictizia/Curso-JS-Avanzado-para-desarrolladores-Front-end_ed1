@@ -1,0 +1,133 @@
+// creamos un array vacio con los usuarios
+var usuarios = [];
+
+// Definimos el cajero
+var cajero = {
+  empresa: "Bankia",
+  moneda: "euro",
+  deposito: 100000,
+  
+  admin: {
+    // Modifica depósito del banco
+    modificaDeposito: function (datos) {
+       var dineroDisponible = cajero.deposito += datos;
+       if (cajero.deposito >= 0  && dineroDisponible >= 0) {
+          cajero.deposito += dineroDisponible;
+         console.log("Admin: El banco dispone de un efectivo de " + dineroDisponible + "€");
+       } else {
+          console.log("Admin: el Banco no tiene suficiente efectivo para la operacion");
+       }
+       
+    },
+     
+    // metodo para añadir clientes 
+    add: function(datos) {
+       
+      // Si hay un usuario con el mismo nombre lo borramos
+      if ( usuarios.indexOf(datos) !== -1){
+         console.log("EL usuario " + datos.usuario + " ya existe");
+      } else {
+         
+         // buscamos si hay un hueco libre en el array
+         var vacante = usuarios.indexOf(undefined);
+         
+         // Si no hay heuco en el array lo metemos al final
+         if (vacante === -1) {
+           usuarios.push(datos);
+           console.info("Admin: El usuario " + datos.usuario + " a sido añadido al final del array");
+         
+         // Si no lo mtemos en el hueco
+         } else {
+           usuarios[vacante] = datos;
+           console.info("Admin: El usuario " + datos.usuario + " a sido añadido en una vacante");
+         }
+      }
+      
+    },
+     
+    // metodo para borrar clientes
+    remove: function(datos) {
+       
+       // si no hay clientes...
+      if (usuarios.length === 0) {
+        console.error("Admin: No existen usuarios");
+      } else {
+        var posicion = usuarios.indexOf(datos);
+        if ( posicion !== -1 ) {
+           
+          // si lo encuentra lo borrramos
+          console.info("Admin: El usuario  " + datos.usuario + " a sido borrado");
+          usuarios[posicion] = undefined;
+        } else {
+           // sino mostramos el error de que no existe
+          console.error("Admin: El usuario no existe");
+        }
+      }   
+    }, 
+  }, 
+   
+  clientes: {
+     
+     // funcion para sacar dinero o ingresar
+     modificarEfectivo: function(usuario, pass, efectivoMod){
+        
+        // comprobamos si hay usuarios
+        if (usuarios.length === 0) {
+           console.error("Cliente: no existen usuarios");
+        } else {
+           
+           // comprobamos is el usuario existe
+           var cliente = usuarios.indexOf(usuario);
+           if ( cliente === -1) {
+              console.error("Cliente: El cliente no existe");
+              return;
+              
+           // comprobamos si la contraseña es correcta   
+           } else if (usuario.pass != pass){
+              console.error("Cliente: La contraseña es incorrecta");
+              return;
+              
+           // Modificamos el saldo   
+           } else {
+              usuario.efectivo += efectivoMod;
+              console.info("Cliente: Usuario: Hola, " + usuario.nombre + ", su efectivo a sido modifciado en " + efectivoMod + "€ y su nuevo efectivo es " + usuario.efectivo + "€");
+              cajero.admin.modificaDeposito(efectivoMod);
+           }
+        }
+     }
+  }
+};
+
+// funcion creación de usuario
+function usuarioNuevo(usuario, nombre, pass, efectivo) {
+  this.usuario = usuario;
+  this.nombre = nombre;
+  this.pass = pass;
+  this.efectivo = efectivo;
+}
+
+
+//// Consola, acciones  /////
+// 1.Creo un usuario
+var alvaro = new usuarioNuevo("alvaro", "Alvaro Gonzalez", "123", 3000);
+var peter = new usuarioNuevo("peter", "Peter Lion", "123", 700);
+var epi = new usuarioNuevo("epi", "Epi", "2222000", 200);
+
+// 2.Añade un usuario al listado de clientes
+cajero.admin.add(alvaro);
+cajero.admin.add(peter);
+
+// 3.borramos un usuario del listado de cientes y añadimos otro
+cajero.admin.remove(peter);
+cajero.admin.add(epi);
+
+// 4. Mostramos el listado que queda
+console.log(usuarios);
+
+// 5. ingresamos 100€ en un usuario e retiramos 100€ de otro
+cajero.clientes.modificarEfectivo(alvaro, "123", -100);
+cajero.clientes.modificarEfectivo(epi, "aaaa", -1000);
+
+// 6. Modificamos el deposito del banco
+cajero.admin.modificaDeposito(100);
+
