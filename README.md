@@ -41,7 +41,7 @@ Ten en cuenta que este Curso está diseñado para aquellos desarrolladores que y
 Sobre el Curso
 =================
 * Horario: Lunes, Miércoles y Viernes de 19h a 22h
-* Fechas: 13/02/2017 - 17/04/2017
+* Fechas: 13/02/2017 - 19/04/2017
 
 Teoría y Recursos
 =================
@@ -70,8 +70,9 @@ Teoría | Recursos
 [Clase 21](teoria/clase21.md) | [Clase 21](recursos/clase21.md)
 [Clase 22](teoria/clase22.md) | [Clase 22](recursos/clase22.md)
 [Clase 23](teoria/clase23.md) | [Clase 23](recursos/clase23.md)
-Clase 24 | Clase 24
+[Clase 24](teoria/clase24.md) | [Clase 24](recursos/clase24.md)
 
+**[Extras](teoria/extras.md)**
 
 Temario
 =================
